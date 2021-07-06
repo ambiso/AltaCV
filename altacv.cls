@@ -50,6 +50,7 @@
 \RequirePackage{ifxetex,ifluatex}
 \RequirePackage{scrlfile}
 \RequirePackage{xparse}
+\RequirePackage{scrextend}
 
 %% v1.1.5: added for convenience
 \newif\ifxetexorluatex
@@ -118,7 +119,9 @@
 % \RequirePackage{marginfix}
 
 \setlength{\parindent}{0pt}
-\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
+\newcommand{\divider}{
+  %\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}
+  \bigskip}
 
 \newenvironment{fullwidth}{%
   \begin{adjustwidth}{}{\dimexpr-\marginparwidth-\marginparsep\relax}}
@@ -251,7 +254,7 @@
 \newcommand{\namefont}{\Huge\bfseries}
 \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\footnotesize\bfseries}
-\newcommand{\cvsectionfont}{\LARGE\bfseries}
+\newcommand{\cvsectionfont}{\LARGE}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
 
 \newcommand{\makecvheader}{%
@@ -284,15 +287,27 @@
 }
 
 % v1.1.4: fixes inconsistent font size
+\newcommand{\cveventtitle}[1]{%
+  {\bf\color{emphasis}#1}
+}
+
+\newcommand{\cveventwithdate}[2]{%
+  \cveventtitle{#1}
+  \hfill\ifstrequal{#2}{}{}{\small#2\par}%
+}
+
 \newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1\par}
+  \cveventwithdate{#1}{#3}
+  \normalsize
+  \ifstrequal{#2}{}{}{{#2}}
+  \ifstrequal{#4}{}{}{\hfill\small#4\par}
   \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-  \textbf{\color{accent}#2}\par
-  \smallskip}
-  \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar~#3}}}%
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker~#4}}}\par
-  \medskip\normalsize
+}
+
+\newcommand{\cveventbody}[1]{%
+  \begin{addmargin}[1.5em]{0em}
+    #1
+  \end{addmargin}
 }
 
 \newcommand{\cvachievement}[3]{%
