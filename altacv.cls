@@ -251,11 +251,11 @@
 }
 \let\photo\photoR
 
-\newcommand{\namefont}{\Huge\bfseries}
+\newcommand{\namefont}{\Huge}
 \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\footnotesize\bfseries}
 \newcommand{\cvsectionfont}{\LARGE}
-\newcommand{\cvsubsectionfont}{\large\bfseries}
+\newcommand{\cvsubsectionfont}{\large}
 
 \newcommand{\makecvheader}{%
   \begingroup
@@ -283,7 +283,8 @@
 
 \newcommand{\cvsubsection}[1]{%
   \smallskip%
-  {\color{subheading}\cvsubsectionfont{#1}\par}\medskip
+  {\color{subheading}\cvsubsectionfont{#1}}\\[-1ex]%
+  {\color{headingrule}\rule{\linewidth}{0.5pt}\par}\medskip
 }
 
 % v1.1.4: fixes inconsistent font size
