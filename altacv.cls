@@ -284,7 +284,7 @@
 \newcommand{\cvsubsection}[1]{%
   \smallskip%
   {\color{subheading}\cvsubsectionfont{#1}}\\\vspace{-0.8em}%
-  {\color{headingrule}\rule{\linewidth}{1pt}\par}\\[-1ex]
+  {\color{headingrule}\rule{\linewidth}{1pt}\par}\vspace{-0.5ex}
 }
 
 % v1.1.4: fixes inconsistent font size
